@@ -14,13 +14,19 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log(data);
   });
-
+  // notify when connection is established
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
-  });
-  conn.on('connect', () => {
+    // write nickname to server 
     conn.write("Name: JER");
+    // move snake up
+    conn.write("Move: up");
+    // move snake left
+    setInterval(() => {
+      conn.write("Move: left")
+    }, 2000);
   });
+
 
   return conn;
 }
