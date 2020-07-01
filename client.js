@@ -5,7 +5,8 @@ const net = require('net');
  */
 const connect = function() {
   const conn = net.createConnection({ 
-    host: 'localhost',
+    host: '135.23.222.148',
+    // host: 'localhost',
     port: 50541,
   });
   // interpret incoming data as text
@@ -18,7 +19,7 @@ const connect = function() {
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
     // write nickname to server 
-    conn.write("Name: JER");
+    conn.write("Name: MJN");
     // move snake up
     conn.write("Move: up");
     // move snake left
@@ -28,9 +29,15 @@ const connect = function() {
   });
 
 
+  /**
+ * Setup User Interface 
+ * Specifically, so that we can handle user input via stdin
+ */
+
+
   return conn;
 }
 
 module.exports = {
   connect
-}
+};
