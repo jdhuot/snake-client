@@ -13,7 +13,14 @@ const connect = function() {
   // message when we get booted from server for idling
   conn.on('data', (data) => {
     console.log(data);
-  })
+  });
+
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server");
+  });
+  conn.on('connect', () => {
+    conn.write("Name: JER");
+  });
 
   return conn;
 }
